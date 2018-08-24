@@ -14,9 +14,7 @@ var CWL = function($, document, window) {
           jQuery('header').removeClass("smaller");
         }
       })
-      header.on('click', '#menu-btn', function () {
-        $('#mainMenu').toggle()
-      });
+
       window.onresize = function(event) {
         var mq = window.matchMedia( "(min-width: 993px)" );
         var mx = window.matchMedia( "(max-width: 992px)" );
@@ -26,6 +24,12 @@ var CWL = function($, document, window) {
           $("#mainMenu").hide();
         }
       }
+    },
+    onMenu: function () {
+      var header = this.el.header;
+      header.on('click', '#menu-btn', function () {
+        $('#mainMenu').toggle()
+      });
     },
     imgToggle: function () {
       $('body').on('click','.cwl-about-mini', function () {
@@ -83,7 +87,8 @@ var CWL = function($, document, window) {
     },
     init: function () {
       this.el.header = $('header')
-      this.onNav()
+      // this.onNav()
+      this.onMenu()
       this.imgToggle()
       this.navList()
       this.companyToggel()
